@@ -1,0 +1,129 @@
+
+package Ordenamiento;
+
+class Lista {
+NodoLista cabeza;
+NodoLista nuevo;
+int llave=0;
+
+int tamaño=0;
+	public Lista(int llave) {
+		cabeza=null;
+		nuevo=null;
+this.llave=llave;;
+
+	}
+	/** @author David_Jmz.*/
+	public void insertaLista(int valor ) { //Método para insertar y acomodar los elementos
+		tamaño++;
+		nuevo=new NodoLista (valor);
+		NodoLista puntero=cabeza;
+		NodoLista rec=cabeza;
+		NodoLista temCabeza=cabeza;
+		NodoLista temCabeza2=cabeza;
+		int contador=0;
+		boolean activador=false;
+if(cabeza==null) {
+			cabeza=nuevo;
+				
+		}else {
+
+			if(nuevo.getValor()>cabeza.getValor()) {
+				
+				while(puntero!=null) {
+					
+					if(nuevo.getValor()>rec.getValor()&&rec!=null) {
+						
+						contador++;
+						activador=true;
+						rec=rec.getSiguiente();
+						
+					}
+					puntero=puntero.getSiguiente();
+					
+					}
+				
+				if(activador) {
+					int contador2=0;
+					while(contador2<contador-1) { //obtiene el valor anterior
+						temCabeza=temCabeza.getSiguiente();
+						contador2++;
+						
+					}if(temCabeza.getSiguiente()!=null) {//obtiene el siguiente valor
+					
+					temCabeza2=temCabeza.getSiguiente();
+					
+						nuevo.enlazar(temCabeza2);
+
+					}
+					temCabeza.enlazar(nuevo);
+					activador=false;
+					}
+					}
+			}if(nuevo.getValor()<cabeza.getValor()) {
+			NodoLista tem=cabeza;
+			nuevo.enlazar(tem);
+			cabeza=nuevo;
+			}
+			}
+	/**@return devuelve valor de llave*/
+	public int getLLave() {
+		return llave;
+	}
+	/**@return devuelve tamaño*/
+	public int getTamaño() {
+		return tamaño;
+	}
+	
+	public void recorrer() { //Metodo para recorrer la lista
+		NodoLista tem=cabeza;
+		int contador=0;
+	
+		while(tem!=null) {
+			System.out.println("Indice: " + tem.getValor());
+			tem=tem.getSiguiente();
+			contador++;
+		}
+		
+		
+	}
+	/**@return devuelve valor de la cabeza*/
+	public NodoLista getCabeza() {
+		
+		return cabeza;
+	}
+	
+	//clase NodoLista
+	
+	class NodoLista {
+		int valor ;
+		NodoLista siguiente;
+		/**Crea los nodos*/
+		public NodoLista(int valor ) {
+			
+		this.valor=valor;	
+			
+		siguiente=null;
+		}
+		/**@return Enlaza los nodos*/
+		public void enlazar(NodoLista n) {
+			siguiente=n;
+			
+		}
+		/**@return Obtiene el elemento siguiente*/
+		public NodoLista getSiguiente() {
+			return siguiente;
+			
+		}
+		/**@return devuelve el valor*/
+		public int getValor() {
+			return valor;
+			
+		}
+		
+		
+		
+	}
+
+	
+}

@@ -1,0 +1,72 @@
+package Ordenamiento;
+import java.util.*;
+public class Adress_Calculator_Sort {
+/**@author David_Jmz.*/
+	public static void main(String[] args) {
+		
+		
+		Lista k=null;
+	
+		Scanner entrada=new Scanner(System.in);
+		Lista milista[]=new Lista[10];
+		int contador =0;
+		for(int i=0;i<milista.length;i++) { 
+			
+			milista[i]=new Lista(contador);//creamos un vector de tipo Lista para almacenar las 10 listas que pide el 
+			contador++;						//ordenamiento adress calculator
+		}
+				
+		do {
+		System.out.println(" 1 Ingresae un valor ");
+		System.out.println(" 2 Recorrido");
+		System.out.println(" 3 Tamaño");
+		int opcion=entrada.nextInt();
+		
+		if(opcion==1) {			//acomoda y llena las listas
+			System.out.println("Ingresa un valor ");
+		int valor=entrada.nextInt();
+		int division=valor/10;			
+		int residuo=division%10;		
+		if(residuo==0) {
+		int residuo2=valor%10;
+		
+		k=milista[residuo];
+		k.insertaLista(valor);
+
+		}else {
+		
+		k=milista[residuo];
+		
+		k.insertaLista(valor);
+		}
+
+		}if(opcion==2) {			//recorre las listas enlazadas
+			System.out.println("Recorrido");
+			Lista aux=null;
+			for(int i=0;i<milista.length;i++) {
+				
+				aux=milista[i];
+			
+				
+				aux.recorrer();
+			
+				}
+			}
+		if(opcion==3) {  //Muestra el tamaño
+			
+			for(int i=0;i<milista.length;i++) {
+				
+				int c =milista[i].getTamaño();
+			System.out.println("tamaño de lista "+i +" es "+c);	
+			}
+		}
+		
+		
+	
+		}while(true);
+		
+		
+		
+	}
+
+}
